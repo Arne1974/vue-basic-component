@@ -7,7 +7,19 @@ body {
   border: 2px solid Gray;
   border-radius: 10px;
 }
-
+.rounded {
+  border-radius: 10px;
+}
+.large {
+  font-size: 2em;
+}
+label {
+  margin-left: 1em;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 #card header {
   display: block;
   border-radius: 8px 8px 0 0;
@@ -15,11 +27,11 @@ body {
   padding: 10px;
   color: white;
   font-size: 1.5em;
+  margin-bottom: 1em;
 }
 
 #card div,
-#card p,
-form {
+#card p {
   padding: 1em;
 }
 

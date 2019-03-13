@@ -1,28 +1,21 @@
 var card = new Vue({
   el: '#card',
   data: {
-    title: 'Dinosaurs',
-    input: '',
-    buttonText: 'Add Dinosaur',
-    items: ["Velociraptor", "Triceratops", "Stegosaurus"]
+    title: 'Style Bindings',
+    isRounded: false,
+    sizeToggle: false,
+    disabled: false,
+    backgroundColor: "#ccc",
+    fontColor: "#000",
+    range: 50
   },
   computed: {
-    buttonDisabled: function(){
-      return this.input == "";
-    }
-  },
-  watch: {
-    input: _.debounce(function () {
-      this.buttonText = this.input !== "" ? "Add " + this.input : "Add Dinosaur";
-    }, 250)
-  },
-  methods: {
-    addItem: function (e) {
-      e.preventDefault();
-      if (!this.input) return;
-
-      this.items.push(this.input);
-      this.input = '';
+    styles: function () {
+      return {
+        color: this.fontColor,
+        background: this.backgroundColor,
+        "margin-left": this.range + "%"
+      }
     }
   }
 });
