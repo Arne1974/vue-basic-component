@@ -7,18 +7,24 @@
 
 <body>
   <div id="card">
-    <header>{{title}}</header>
+    <header>{{title}} <span v-on:click="toggle">{{editLabel}}</span></header>
     <ul>
-      <li v-for="dino in dinos">
-        <dino-counter v-bind:initial-quantity="dino.quantity" v-bind:name="dino.name" v-on:increment="incrementalTotal"></dino-counter>
+      <li v-for="item in items">
+        <keep-alive>
+          <component v-bind:is="currentView" v-bind:initial-quantity="item.quantity" v-bind:name="item.text" v-bind:diet="item.diet"></component>
+        </keep-alive>
       </li>
     </ul>
-    <p>Total Dinosaur: {{total}}</p>
   </div>
 
-  <script type="text/x-template" id="dino-counter">
+  <script type="text/x-template" id="dino-edit">
     <div>
       <button v-on:click="increment">{{quantity}}</button> {{name}}
+    </div>
+  </script>
+  <script type="text/x-template" id="dino-show">
+    <div>
+      <strong>{{name}}</strong> | {{diet}}
     </div>
   </script>
 
